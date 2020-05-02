@@ -43,7 +43,7 @@ public class UsuarioController {
 		return usuarioService.consultaUsuarioIdService(id);
 	}
 	
-	@GetMapping("/usuario/cpf")
+	@PostMapping("/usuario/cpf")
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "Consulta um usuário pelo CPF no HSQLDB")
 	public Usuario consultarUsuarioPeloCpf(@RequestBody Map<String, String> usuarioJson) {
