@@ -78,7 +78,7 @@ public class UsuarioService {
 		usuarioDesAtualizado = usuarioDao.encontrarUmUsuarioPeloId(usuarioAtualizado.getIdUsuario());
 		if (usuarioDesAtualizado.isAtivo()) {
 			usuarioDesAtualizado.setNome(usuarioAtualizado.getNome());
-			usuarioDesAtualizado.setSenha(usuarioAtualizado.getSenha());
+			usuarioDesAtualizado.setSenha(criptografiaService.gerarStringHash(usuarioAtualizado.getSenha()));
 			usuarioDesAtualizado.setRegra(usuarioAtualizado.getRegra());
 			usuarioDesAtualizado.setSexo(usuarioAtualizado.getSexo());
 			usuarioDesAtualizado.setEmail(usuarioAtualizado.getEmail());
