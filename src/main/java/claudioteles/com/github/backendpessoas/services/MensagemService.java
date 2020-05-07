@@ -60,11 +60,8 @@ public class MensagemService {
 		Usuario usuarioDestinatario = new Usuario();
 		usuarioDestinatario = usuarioDao.encontrarUmUsuarioPeloId(destinatario);
 		List<Mensagem> mensagens = new ArrayList<>();
-		if (usuarioRemetente.isAtivo()) {
-			mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(usuarioRemetente, usuarioDestinatario, usuarioDestinatario, usuarioDestinatario));
-			return mensagens;
-		}
-		return null;
+		mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(usuarioRemetente, usuarioDestinatario, usuarioDestinatario, usuarioDestinatario));
+		return mensagens;
 	}
 
 	public Map<String, Boolean> deletarMensagemService(Long id, Long idMensagem) {
