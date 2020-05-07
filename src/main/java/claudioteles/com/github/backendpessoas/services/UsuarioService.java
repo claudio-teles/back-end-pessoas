@@ -31,7 +31,7 @@ public class UsuarioService {
 			u.setSexo(usuario.getSexo());
 			u.setEmail(usuario.getEmail());
 			u.setDataDeNascimento(usuario.getDataDeNascimento());
-			u.setNaturalidade(usuario.getNome());
+			u.setNaturalidade(usuario.getNaturalidade());
 			u.setNacionalidade(usuario.getNacionalidade());
 			u.setCpf(usuario.getCpf());
 			u.setDataDeCadastro(new Date());
@@ -83,6 +83,7 @@ public class UsuarioService {
 			usuarioDesAtualizado.setSexo(usuarioAtualizado.getSexo());
 			usuarioDesAtualizado.setEmail(usuarioAtualizado.getEmail());
 			usuarioDesAtualizado.setCpf(usuarioAtualizado.getCpf());
+			usuarioAtualizado.setDataDeAtualizacao(new Date());
 			return usuarioDao.atualizarUsuarios(usuarioDesAtualizado);
 		}
 		return null;

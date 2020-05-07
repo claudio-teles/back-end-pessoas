@@ -1,0 +1,47 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C2*/SET SCHEMA PUBLIC
+\u000a    create table chat (\u000a       id_chat bigint not null,\u000a        destinatario_id_usuario bigint not null,\u000a        remetente_id_usuario bigint not null,\u000a        primary key (id_chat)\u000a    )
+\u000a    create table mensagem (\u000a       id_mensagem bigint not null,\u000a        data_de_envio date not null,\u000a        mensagem varchar(1000) not null,\u000a        destinatario_id_usuario bigint not null,\u000a        remetente_id_usuario bigint not null,\u000a        mensagems_id_chat bigint,\u000a        primary key (id_mensagem)\u000a    )
+\u000a    create table usuario (\u000a       id_usuario bigint not null,\u000a        ativo boolean not null,\u000a        cpf varchar(20) not null,\u000a        data_de_atualizacao date not null,\u000a        data_de_cadastro date not null,\u000a        data_de_nascimento date not null,\u000a        email varchar(20),\u000a        nacionalidade varchar(20),\u000a        naturalidade varchar(20),\u000a        nome varchar(20) not null,\u000a        regra varchar(20) not null,\u000a        senha varchar(255) not null,\u000a        sexo varchar(255),\u000a        primary key (id_usuario)\u000a    )
+\u000a    alter table usuario \u000a       add constraint UK_692bsnqxa8m9fmx7m1yc6hsui unique (cpf)
+create sequence sequencia_chat start with 30 increment by 1
+create sequence sequencia_mensagem start with 30 increment by 1
+create sequence sequencia_usuario start with 30 increment by 1
+\u000a    alter table chat \u000a       add constraint um_chat_tem_um_destinatario \u000a       foreign key (destinatario_id_usuario) \u000a       references usuario
+\u000a    alter table chat \u000a       add constraint um_chat_tem_um_remetente \u000a       foreign key (remetente_id_usuario) \u000a       references usuario
+\u000a    alter table mensagem \u000a       add constraint uma_mensagem_tem_um_destinatario \u000a       foreign key (destinatario_id_usuario) \u000a       references usuario
+\u000a    alter table mensagem \u000a       add constraint uma_mensagem_tem_um_remetente \u000a       foreign key (remetente_id_usuario) \u000a       references usuario
+\u000a    alter table mensagem \u000a       add constraint uma_chat_tem_muitas_mensagens \u000a       foreign key (mensagems_id_chat) \u000a       references chat
+INSERT INTO USUARIO VALUES(30,FALSE,'000.000.000-01','2020-05-07','2020-05-07','1965-01-18','email@um.com','Brasileiro','Fortaleza','NomeUm','usuario','56AA79F8EC9BA47B6A7D37ECF45FF1295DE08922C46514C273B2AE9757B96A9E','masculino')
+ALTER SEQUENCE PUBLIC.SEQUENCIA_USUARIO RESTART WITH 31
+COMMIT
+INSERT INTO USUARIO VALUES(31,FALSE,'000.000.000-02','2020-05-07','2020-05-07','1970-08-16','email@dois.com','Brasileiro','Fortaleza','NomeDois','usuario','4C48AE4070E358E3401B87C0A1BCA3577C471687FE24CB77714E045C1622E1CB','masculino')
+ALTER SEQUENCE PUBLIC.SEQUENCIA_USUARIO RESTART WITH 32
+COMMIT
+INSERT INTO USUARIO VALUES(32,FALSE,'000.000.000-03','2020-05-07','2020-05-07','1990-08-10','email@tres.com','Brasileiro','Fortaleza','NomeTres','usuario','36D70BCCF9405DC81977A33269E9A30683DA52B50DE4466BA81A5A8E87096460','feminino')
+ALTER SEQUENCE PUBLIC.SEQUENCIA_USUARIO RESTART WITH 33
+COMMIT
+INSERT INTO USUARIO VALUES(33,FALSE,'000.000.000-04','2020-05-07','2020-05-07','1994-12-31','email@quatro.com','Brasileiro','Fortaleza','NomeQuatro','usuario','A379B462A21A747A9146A3D29A1DDB431B9F00749FB8366FEA1BEC9B6116BF89','feminino')
+ALTER SEQUENCE PUBLIC.SEQUENCIA_USUARIO RESTART WITH 34
+COMMIT
+DISCONNECT
+/*C3*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+DISCONNECT
