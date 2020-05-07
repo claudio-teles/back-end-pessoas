@@ -47,20 +47,15 @@ public class ChatService {
 
 	public Chat obterChatService(Long id, Long idChat, Long rem, Long dest) {
 		Chat chat = new Chat();
-		Usuario usuario = new Usuario();
 		Usuario remetente = new Usuario();
 		remetente = usuarioDao.encontrarUmUsuarioPeloId(rem);
 		Usuario destinatario = new Usuario();
 		destinatario = usuarioDao.encontrarUmUsuarioPeloId(dest);
 		List<Mensagem> mensagens = new ArrayList<>();
 		mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(remetente, destinatario, destinatario, destinatario));
-		usuario = usuarioDao.encontrarUmUsuarioPeloId(id);
-		if (usuario.isAtivo()) {
-			chat = chatDao.encontrarConversaPeloId(idChat);
-			chatDao.atualizarChat(idChat, mensagens);
-			return chat;
-		}
-		return null;
+		chat = chatDao.encontrarConversaPeloId(idChat);
+		chatDao.atualizarChat(idChat, mensagens);
+		return chat;
 	}
 
 	public List<Chat> listarChatService(Long id) {
