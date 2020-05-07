@@ -8,5 +8,5 @@ import claudioteles.com.github.backendpessoas.models.Mensagem;
 import claudioteles.com.github.backendpessoas.models.Usuario;
 
 public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
-	List<Mensagem> findByRemetenteAndDestinatario(Usuario remetente, Usuario destinatario);
+	List<Mensagem> findByRemetenteAndDestinatarioOrDestinatarioAndRemetente(Usuario remetente, Usuario destinatario, Usuario _remetente, Usuario _destinatario);
 }

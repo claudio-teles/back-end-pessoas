@@ -61,7 +61,7 @@ public class MensagemService {
 		usuarioDestinatario = usuarioDao.encontrarUmUsuarioPeloId(destinatario);
 		List<Mensagem> mensagens = new ArrayList<>();
 		if (usuarioRemetente.isAtivo()) {
-			mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(usuarioRemetente, usuarioDestinatario));
+			mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(usuarioRemetente, usuarioDestinatario, usuarioDestinatario, usuarioDestinatario));
 			return mensagens;
 		}
 		return null;

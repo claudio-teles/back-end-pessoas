@@ -27,8 +27,8 @@ public class MensagemDao {
 		return mensagemRepository.findAll();
 	}
 	
-	public List<Mensagem> listarMensagensPeloRemetenteEDestinatario(Usuario remetente, Usuario destinatario) {
-		return mensagemRepository.findByRemetenteAndDestinatario(remetente, destinatario);
+	public List<Mensagem> listarMensagensPeloRemetenteEDestinatario(Usuario remetente, Usuario destinatario, Usuario _remetente, Usuario _destinatario) {
+		return mensagemRepository.findByRemetenteAndDestinatarioOrDestinatarioAndRemetente(remetente, destinatario, _remetente, _destinatario);
 	}
 	
 	public Boolean deletarMensagem(Long id) {

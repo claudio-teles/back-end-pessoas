@@ -53,7 +53,7 @@ public class ChatService {
 		Usuario destinatario = new Usuario();
 		destinatario = usuarioDao.encontrarUmUsuarioPeloId(dest);
 		List<Mensagem> mensagens = new ArrayList<>();
-		mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(remetente, destinatario));
+		mensagens.addAll(mensagemDao.listarMensagensPeloRemetenteEDestinatario(remetente, destinatario, destinatario, destinatario));
 		usuario = usuarioDao.encontrarUmUsuarioPeloId(id);
 		if (usuario.isAtivo()) {
 			chat = chatDao.encontrarConversaPeloId(idChat);
